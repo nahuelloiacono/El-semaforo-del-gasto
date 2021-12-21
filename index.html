@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wines City</title>
+    <title>El semáforo del gasto</title>
 
-    <meta name="description" content="Simulador de tienda de vinos" />
+    <meta
+      name="description"
+      content="Simulador de gastos de impuestos y servicios"
+    />
 
     <meta
       name="keywords"
-      content="WINES CITY, VINO, VINOS, MALBEC, CABERNET, CIUDAD JARDÍN LOMAS EL PALOMAR, NAHUEL LOIACONO"
+      content="SIMULADOR, GASTOS, SERVICIOS, IMPUESTOS, AGUA, LUZ, GAS, CABLE, INTERNET, STREAMING, TELÉFONO FIJO, TELÉFONO MÓVIL, CELULAR, SEGURO, PATENTE, EXPENSAS, ABL, MUNICIPAL, INMOBILIARIO, AMBA, ÁREA METROPOLITANA DE BUENOS AIRES, CABA, CIUDAD AUTÓNOMA DE BUENOS AIRES, GBA, GRAN BUENOS AIRES, NAHUEL LOIACONO"
     />
 
     <!-- Bootstrap -->
@@ -30,27 +33,620 @@
   <!-- Body -->
 
   <body>
-    <h1>Bienvenidos a Wines City</h1>
+    <!-- Header-->
 
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="index.html">Inicio</a>
-          </li>
-          <li>
-            <a href="historia.html">Historia</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <img
+                src="https://cdn.pixabay.com/photo/2013/07/13/10/32/traffic-light-157459_960_720.png"
+                alt="Logo del simulador"
+                width="45"
+                height="75"
+              />
 
-    <!-- Vinos en venta -->
+              <!-- El semáforo del gasto -->
+
+              <a class="navbar-brand" href="index.html"
+                ><div class="títuloNav">El semáforo del gasto</div>
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav">
+                  <li>
+                    <a class="nav-link active" href="#sabíasQue"
+                      >Sabías que...</a
+                    >
+                  </li>
+                  <li>
+                    <a class="nav-link active" href="#tips"
+                      >Tips para ahorrar</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </header>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="párrafoPrincipal">
+            El simulador de gastos de impuestos y servicios más usado por los
+            vecinos del AMBA
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario del usuario -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Simulador</h5>
+
+          <form>
+            <div>
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Ingrese su nombre..."
+                id="nombre"
+                ;
+              />
+            </div>
+            <div>
+              <label for="apellido" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Ingrese su apellido..."
+                id="apellido"
+              />
+            </div>
+            <div>
+              <label for="sueldo" class="form-label"
+                >Ingreso neto mensual ($)</label
+              >
+              <input type="number" class="form-control" id="sueldo" />
+            </div>
+            <div>
+              <label for="residencia" class="form-label"
+                >Lugar de residencia</label
+              >
+              <select class="form-select" id="lugarDeResidencia">
+                <option value="CABA">Ciudad de Buenos Aires (CABA)</option>
+                <option value="GBA">Gran Buenos Aires (GBA)</option>
+              </select>
+            </div>
+            <div>
+              <label for="vivienda" class="form-label">Vivís en una...</label>
+              <select class="form-select" id="hogarODepto">
+                <option value="casa">Casa</option>
+                <option value="departamento">Departamento</option>
+              </select>
+            </div>
+            <div>
+              <label for="vivienda" class="form-label"
+                >¿Tenés auto y/o moto?</label
+              >
+              <select class="form-select" id="autoOMoto">
+                <option value="si">Si</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div>
+              <label for="agua" class="form-label">Agua</label>
+              <input type="number" class="form-control" value="0" id="agua" />
+            </div>
+            <div>
+              <label for="luz" class="form-label">Luz</label>
+              <input type="number" class="form-control" value="0" id="luz" />
+            </div>
+            <div>
+              <label for="gas" class="form-label">Gas</label>
+              <input type="number" class="form-control" value="0" id="gas" />
+            </div>
+
+            <div>
+              <label for="cable" class="form-label">Cable</label>
+              <input type="number" class="form-control" value="0" id="cable" />
+            </div>
+            <div>
+              <label for="internet" class="form-label">Internet</label>
+              <input type="number" class="form-control" value="0" id="internet"
+            </div>
+            <div>
+              <label for="teléfonoFijo" class="form-label">Teléfono fijo</label>
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="teléfonoFijo"
+              />
+            </div>
+            <div>
+              <label for="teléfonoMóvil" class="form-label"
+                >Teléfono móvil</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="teléfonoMóvil"
+              />
+            </div>
+            <div>
+              <label for="streaming" class="form-label"
+                >Servicios de streaming</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="streaming"
+              />
+            </div>
+            <div>
+              <label for="seguroHogar" class="form-label"
+                >Seguro de hogar</label
+              >
+              <input type="number" class="form-control" value="0" id="seguro" />
+            </div>
+
+            <!-- Agregar ABL (CABA) o Municipal/Inmobiliario (GBA) -->
+
+            <!-- Agregar patente y seguro si corresponde -->
+
+            <div>
+              <label for="otros" class="form-label">Otros gastos</label>
+              <input type="number" class="form-control" value="0" id="otros" />
+            </div>
+
+            <div class="container-fluid centrar">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="btn btn-dark" id="botón1">
+                    Calcular
+                  </button>
+                  <button type="reset" class="btn btn-dark" id="botón2">
+                    Limpiar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="faltaNombre"></div>
+    <div id="faltaApellido"></div>
+    <div id="faltaSueldo"></div>
+    <div id="contenidoUsuario"></div>
+
+    <!-- Datos - Gastos de impuestos y servicios - Porcentaje gastado sobre el sueldo del usuario -->
+
+    <div id="títuloGastos"></div>
+    <div id="gastoTotal"></div>
+    <div id="porcentajeDeSueldo"></div>
+
+    <!-- Sabías que... - Carousel con informaciones -->
+
+    <h5 id="sabíasQue">Sabías que...</h5>
+
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <!-- DNRPA -->
+
+        <div class="carousel-item active">
+          <div id="párrafoConInfo"></div>
+          <p class="centrar">
+            Más info en la página web de la
+            <a
+              href="https://www.dnrpa.gov.ar/portal_dnrpa/valuaciones2.php"
+              target="_blank"
+            >
+              <img
+                src="https://lh3.googleusercontent.com/proxy/1JLYa6WrhYwiMsFdeeq9RTeIuoyHTVSm9WVMSzBpwM47DLRQ1eHbDp3kc2mdCTP05tjgfDnbmExkKbRO4Xl99y_cv34wdYf4_17Md_2dysy_EGOIYblZAa97pO35QBjA9ZDzaVx_SkPEsms"
+                width="150"
+                height="75"
+                alt="Logo de DNRPA"
+              />
+            </a>
+          </p>
+        </div>
+
+        <!-- Patentes -->
+
+        <div class="carousel-item">
+          <div id="párrafoConInfo2"></div>
+          <p class="centrar">
+            Más info sobre patentes en la Provincia de Buenos Aires
+            <a
+              href="https://www.arba.gov.ar/consultar/Resultado_Categoria.asp?codigo=AUT"
+              target="_blank"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Logotipo_de_la_Provincia_de_Buenos_Aires.svg/800px-Logotipo_de_la_Provincia_de_Buenos_Aires.svg.png"
+                width="150"
+                height="75"
+                alt="Logo de PBA"
+              />
+            </a>
+          </p>
+          <p class="centrar">
+            Más info sobre patentes en la Ciudad de Buenos Aires
+            <a
+              href="https://www.agip.gob.ar/impuestos/patentes"
+              target="_blank"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Logotipo_de_la_Ciudad_de_Buenos_Aires.svg/1024px-Logotipo_de_la_Ciudad_de_Buenos_Aires.svg.png"
+                width="150"
+                height="75"
+                alt="Logo de CABA"
+              />
+            </a>
+          </p>
+        </div>
+        <div class="carousel-item">
+          <!-- ABL -->
+
+          <div id="párrafoConInfo3"></div>
+          <p class="centrar">
+            Más info en la página web de la
+            <a href="https://www.agip.gob.ar/" target="_blank">
+              <img
+                src="https://www.agip.gob.ar/assets/new_2018/img/logo.png"
+                width="150"
+                height="75"
+                alt="Logo de AGIP"
+              />
+            </a>
+          </p>
+        </div>
+
+        <!-- AySA -->
+
+        <div class="carousel-item">
+          <div id="párrafoConInfo4"></div>
+          <p class="centrar">
+            Más info en la página web de
+            <a href="https://www.aysa.com.ar/" target="_blank">
+              <img
+                src="https://www.aysa.com.ar/media-library/imagenes_inicio/logo.png"
+                width="150"
+                height="75"
+                alt="Logo de AySA"
+              />
+            </a>
+          </p>
+        </div>
+
+        <!-- Edenor -->
+
+        <div class="carousel-item">
+          <div id="párrafoConInfo5"></div>
+          <p class="centrar">
+            Más info en la página web de
+            <a href="https://www.edenor.com/" target="_blank">
+              <img
+                src="https://www.edenor.com/themes/custom/edenor/logo-color.svg"
+                width="150"
+                height="75"
+                alt="Logo de Edenor"
+              />
+            </a>
+          </p>
+        </div>
+
+        <!-- Edesur -->
+
+        <div class="carousel-item">
+          <div id="párrafoConInfo6"></div>
+          <p class="centrar">
+            Más info en la página web de
+            <a href="https://www.edesur.com.ar/" target="_blank">
+              <img
+                src="https://www.edesur.com.ar/wordpress/wp-content/uploads/2021/12/logo-edesur-nuevo2.jpg"
+                width="150"
+                height="75"
+                alt="Logo de Edesur"
+              />
+            </a>
+          </p>
+        </div>
+
+        <!-- Metrogas -->
+
+        <div class="carousel-item">
+          <div id="párrafoConInfo7"></div>
+          <p class="centrar">
+            Más info en la página web de
+            <a
+              href="https://www.metrogas.com.ar/Paginas/Home.aspx"
+              target="_blank"
+            >
+              <img
+                src="https://www.metrogas.com.ar/Style%20Library/img/logo.gif"
+                width="150"
+                height="75"
+                alt="Logo de Metrogas"
+              />
+            </a>
+          </p>
+        </div>
+
+        <!-- Naturgy -->
+
+        <div class="carousel-item">
+          <div id="párrafoConInfo8"></div>
+          <p class="centrar">
+            Más info en la página web de
+            <a href="https://www.naturgy.com/inicio" target="_blank">
+              <img
+                src="https://www.naturgy.com/Publicacion/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1478094926907&ssbinary=true"
+                width="150"
+                height="75"
+                alt="Logo de Naturgy"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Tips - Consejos para bajar gastos -->
+
+    <h5 id="tips">Tips para ahorrar</h5>
+
+    <!-- Tip 1 (Agua) -->
+
+    <div class="contenedorDeTips">
+      <a>
+        <img
+          src="https://cdn.pixabay.com/photo/2013/07/12/13/43/drop-147190_960_720.png"
+          alt="Imagen de agua"
+          width="100"
+          height="100"
+        />
+      </a>
+      <a class="nav-link active" id="tipAgua" href="#">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png"
+          alt="InfoAgua"
+          width="35"
+          height="35"
+        />
+      </a>
+    </div>
+
+    <!-- Tip 2 (Luz) -->
+
+    <div class="contenedorDeTips">
+      <a>
+        <img
+          src="https://cdn.pixabay.com/photo/2013/07/12/14/34/light-148483_960_720.png"
+          alt="Imagen de lamparita"
+          width="100"
+          height="100"
+        />
+      </a>
+      <a class="nav-link active" id="tipLuz" href="#">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png"
+          alt="InfoLuz"
+          width="35"
+          height="35"
+        />
+      </a>
+    </div>
+
+    <!-- Tip 3 (Gas) -->
+
+    <div class="contenedorDeTips">
+      <a>
+        <img
+          src="https://cdn.pixabay.com/photo/2016/03/31/19/48/fire-1295306_960_720.png"
+          alt="Imagen de fuego"
+          width="100"
+          height="100"
+        />
+      </a>
+      <a class="nav-link active" id="tipGas" href="#">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png"
+          alt="InfoGas"
+          width="35"
+          height="35"
+        />
+      </a>
+    </div>
+
+    <!-- Tip 4 (TV) -->
+
+    <div class="contenedorDeTips">
+      <a>
+        <img
+          src="https://cdn.pixabay.com/photo/2014/04/02/10/36/television-303975_960_720.png"
+          alt="Imagen de televisor"
+          width="100"
+          height="100"
+        />
+      </a>
+      <a class="nav-link active" id="tipTv" href="#">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png"
+          alt="InfoTv"
+          width="35"
+          height="35"
+        />
+      </a>
+    </div>
+
+    <!-- Tip 5 (Auto) -->
+
+    <div class="contenedorDeTips">
+      <a>
+        <img
+          src="https://cdn.pixabay.com/photo/2013/07/13/01/11/beetle-155267_960_720.png"
+          alt="Imagen de auto"
+          width="100"
+          height="100"
+        />
+      </a>
+      <a class="nav-link active" id="tipAuto" href="#">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png"
+          alt="InfoAuto"
+          width="35"
+          height="35"
+        />
+      </a>
+    </div>
+
+    <!-- Tip 6 (Banco) -->
+
+    <div class="contenedorDeTips">
+      <a>
+        <img
+          src="https://cdn.pixabay.com/photo/2015/10/14/18/43/bank-988164_960_720.png"
+          alt="Imagen de banco"
+          width="100"
+          height="100"
+        />
+      </a>
+      <a class="nav-link active" id="tipBanco" href="#">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/06/15/15/02/info-1459077_960_720.png"
+          alt="InfoBanco"
+          width="35"
+          height="35"
+        />
+      </a>
+    </div>
 
     <!-- Footer con RRSS -->
 
-    <!-- JavaScript -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <footer class="footer">
+            <section class="footerFlex">
+              <p class="footerFlexHijos">¡ Mis redes !</p>
+
+              <!-- Instagram -->
+
+              <div class="footerFlexHijos">
+                <a
+                  href="https://www.instagram.com/nahuelloiacono/?hl=es-la"
+                  target="_blank"
+                >
+                  <img
+                    src="https://cdn.pixabay.com/photo/2016/09/17/07/03/instagram-1675670_960_720.png"
+                    width="40"
+                    height="40"
+                    alt="Logo de Instagram"
+                  />
+                </a>
+              </div>
+
+              <!-- LinkedIn -->
+
+              <div class="footerFlexHijos">
+                <a
+                  href="https://www.linkedin.com/in/nahuel-loiacono-b63917a0/"
+                  target="_blank"
+                >
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/07/13/07/33/icons-842861_960_720.png"
+                    width="40"
+                    height="40"
+                    alt="Logo de LinkedIn"
+                  />
+                </a>
+              </div>
+
+              <!-- WhatsApp -->
+
+              <div class="footerFlexHijos">
+                <a
+                  href="https://api.whatsapp.com/send?phone=541132386092"
+                  target="_blank"
+                >
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/08/03/13/58/soon-873316_960_720.png"
+                    width="40"
+                    height="40"
+                    alt="Logo de WhatsApp"
+                  />
+                </a>
+              </div>
+            </section>
+            <small>Simulador diseñado por Nahuel Loiacono - 2021</small>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- JavaScript Bootstrap-->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript propio -->
 
     <script src="archivo.js"></script>
+
+    <!-- SweetAlert -->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
