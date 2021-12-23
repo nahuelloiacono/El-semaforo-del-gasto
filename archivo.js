@@ -1,4 +1,4 @@
-// Simulador de gastos de servicios e impuestos en el AMBA (CABA y GBA).
+// Simulador de gastos de impuestos y servicios en el AMBA (CABA y GBA).
 
 // jQuery - Document ready.
 
@@ -184,6 +184,9 @@ function validarFormulario() {
       apellidoValor +
       "!" +
       "</p>";
+
+    // Siguiente etapa.
+
     var formularioSalida2 =
       "<p class='párrafoSiguienteEtapa'>Gracias por haber cumplido con la primera etapa del instructivo. Ahora te pido por favor que pases a la segunda parte, la de completar los gastos de impuestos y servicios. De esa forma, podrás acceder a los resultados del simulador." +
       "</p>";
@@ -191,7 +194,10 @@ function validarFormulario() {
     document.getElementById("formularioSalida2").innerHTML = formularioSalida2;
   }
   salidasFormulario();
+  console.log("Formulario enviado");
 }
+
+// Calcular simulador.
 
 let botónCalcular = document.getElementById("botónCalcular");
 botónCalcular.addEventListener("click", calcularGastoTotal);
@@ -237,6 +243,8 @@ function calcularGastoTotal() {
   let teléfonoMóvil = $("#teléfonoMóvil").val();
   let otros = $("#otros").val();
 
+  // Importe de impuestos y servicios.
+
   let importeTotal =
     parseInt(abl) +
     parseInt(agua) +
@@ -264,7 +272,7 @@ function calcularGastoTotal() {
 
   var sueldoValor = sueldo.val();
   var sueldoIngresado =
-    "<p class='simuladorPárrafos'>Tu sueldo es de: $" + sueldoValor + "</p>";
+    "<p class='simuladorPárrafos'>Tu ingreso es de: $" + sueldoValor + "</p>";
   document.getElementById("sueldoIngresado").innerHTML = sueldoIngresado;
 
   // Gastos.
@@ -310,10 +318,14 @@ function calcularGastoTotal() {
     porcentajeSemáforo.className += "porcentajeAlto";
   }
 
+  // Siguiente etapa.
+
   var simulacroSalida =
     "<p class='párrafoSiguienteEtapa'>¡Espero que te hayan servido los resultados del simulacro! Pero eso no es todo. Te invito a que te informes con algunas cuestiones sobre los impuestos y servicios en la sección 'Sabías que...' y que veas los consejos para bajar los gastos de los mismos en la sección 'Tips para ahorrar'." +
     "</p>";
   document.getElementById("simulacroSalida").innerHTML = simulacroSalida;
+
+  console.log("Simulador calculado");
 }
 
 // Creación de párrafos con info (Sabías que...)
@@ -392,7 +404,7 @@ párrafoConInfo8.appendChild(crearPárrafo8);
 
 // Creación de tips con info.
 
-// Tip 1 (Luz).
+// Tip 1 (Agua).
 
 $("#tipAgua").click(function () {
   Swal.fire({
