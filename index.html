@@ -94,11 +94,30 @@
       </div>
     </div>
 
+    <div class="container-fluid instructivoFondo">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="instructivoTítulo">Instructivo del simulador</p>
+          <p class="instructivoPrimerPárrafo">
+            1. Completar los campos del formulario y validar los datos.
+          </p>
+          <p class="instructivoSegundoPárrafo">
+            2. Completar los importes de los impuestos y servicios que estés
+            pagando para poder obtener los resultados.
+          </p>
+          <p class="instructivoTercerPárrafo">
+            3. ¡Obtené los resultados y sacá tus propias conclusiones!
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Formulario del usuario -->
+
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h5>Simulador</h5>
+          <h5 class="texto">Formulario</h5>
 
           <form>
             <div>
@@ -111,6 +130,7 @@
                 ;
               />
             </div>
+            <div id="textoNombre" class="form-text"></div>
             <div>
               <label for="apellido" class="form-label">Apellido</label>
               <input
@@ -120,57 +140,146 @@
                 id="apellido"
               />
             </div>
+            <div id="textoApellido" class="form-text"></div>
+
+            <div>
+              <label for="residencia" class="form-label"
+                >Lugar de residencia</label
+              >
+              <select class="form-select" id="provincia"></select>
+            </div>
+            <div id="textoProvincia" class="form-text"></div>
+            <div>
+              <label for="vivienda" class="form-label">Vivís en...</label>
+              <select class="form-select" id="vivienda"></select>
+            </div>
+            <div id="textoVivienda" class="form-text"></div>
+            <div>
+              <label for="vivienda" class="form-label"
+                >¿Tenés medio de transporte propio?</label
+              >
+              <select class="form-select" id="transporte"></select>
+            </div>
+            <div id="textoTransporte" class="form-text"></div>
+
+            <div class="container-fluid centrar">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="btn btn-dark" id="botónValidar">
+                    Validar datos
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="formularioSalida1"></div>
+            <div id="formularioSalida2"></div>
+
+            <!-- Simulador -->
+
+            <h5>Simulador</h5>
             <div>
               <label for="sueldo" class="form-label"
                 >Ingreso neto mensual ($)</label
               >
               <input type="number" class="form-control" id="sueldo" />
             </div>
+            <div id="textoSueldo" class="form-text"></div>
             <div>
-              <label for="residencia" class="form-label"
-                >Lugar de residencia</label
-              >
-              <select class="form-select" id="lugarDeResidencia">
-                <option value="CABA">Ciudad de Buenos Aires (CABA)</option>
-                <option value="GBA">Gran Buenos Aires (GBA)</option>
-              </select>
-            </div>
-            <div>
-              <label for="vivienda" class="form-label">Vivís en una...</label>
-              <select class="form-select" id="hogarODepto">
-                <option value="casa">Casa</option>
-                <option value="departamento">Departamento</option>
-              </select>
-            </div>
-            <div>
-              <label for="vivienda" class="form-label"
-                >¿Tenés auto y/o moto?</label
-              >
-              <select class="form-select" id="autoOMoto">
-                <option value="si">Si</option>
-                <option value="no">No</option>
-              </select>
+              <label for="abl" class="form-label">ABL</label>
+              <input type="number" class="form-control" value="0" id="abl" />
             </div>
             <div>
               <label for="agua" class="form-label">Agua</label>
               <input type="number" class="form-control" value="0" id="agua" />
             </div>
             <div>
-              <label for="luz" class="form-label">Luz</label>
-              <input type="number" class="form-control" value="0" id="luz" />
+              <label for="cable" class="form-label">Cable</label>
+              <input type="number" class="form-control" value="0" id="cable" />
+            </div>
+            <div>
+              <label for="expensas" class="form-label">Expensas</label>
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="expensas"
+              />
             </div>
             <div>
               <label for="gas" class="form-label">Gas</label>
               <input type="number" class="form-control" value="0" id="gas" />
             </div>
-
             <div>
-              <label for="cable" class="form-label">Cable</label>
-              <input type="number" class="form-control" value="0" id="cable" />
+              <label for="inmobiliario" class="form-label">Inmobiliario</label>
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="inmobiliario"
+              />
             </div>
             <div>
               <label for="internet" class="form-label">Internet</label>
-              <input type="number" class="form-control" value="0" id="internet"
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="internet"
+              />
+            </div>
+            <div>
+              <label for="luz" class="form-label">Luz</label>
+              <input type="number" class="form-control" value="0" id="luz" />
+            </div>
+            <div>
+              <label for="municipal" class="form-label">Municipal</label>
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="municipal"
+              />
+            </div>
+            <div>
+              <label for="patente" class="form-label">Patente</label>
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="patente"
+              />
+            </div>
+            <div>
+              <label for="seguroAuto" class="form-label">Seguro de auto</label>
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="seguroAuto"
+              />
+            </div>
+            <div>
+              <label for="seguroHogar" class="form-label"
+                >Seguro de hogar</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="seguroHogar"
+              />
+            </div>
+            <div>
+              <label for="streaming" class="form-label"
+                >Servicios de streaming</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                value="0"
+                id="streaming"
+              />
             </div>
             <div>
               <label for="teléfonoFijo" class="form-label">Teléfono fijo</label>
@@ -193,28 +302,6 @@
               />
             </div>
             <div>
-              <label for="streaming" class="form-label"
-                >Servicios de streaming</label
-              >
-              <input
-                type="number"
-                class="form-control"
-                value="0"
-                id="streaming"
-              />
-            </div>
-            <div>
-              <label for="seguroHogar" class="form-label"
-                >Seguro de hogar</label
-              >
-              <input type="number" class="form-control" value="0" id="seguro" />
-            </div>
-
-            <!-- Agregar ABL (CABA) o Municipal/Inmobiliario (GBA) -->
-
-            <!-- Agregar patente y seguro si corresponde -->
-
-            <div>
               <label for="otros" class="form-label">Otros gastos</label>
               <input type="number" class="form-control" value="0" id="otros" />
             </div>
@@ -222,10 +309,10 @@
             <div class="container-fluid centrar">
               <div class="row">
                 <div class="col-sm-12">
-                  <button type="button" class="btn btn-dark" id="botón1">
+                  <button type="button" class="btn btn-dark" id="botónCalcular">
                     Calcular
                   </button>
-                  <button type="reset" class="btn btn-dark" id="botón2">
+                  <button type="reset" class="btn btn-dark" id="botónLimpiar">
                     Limpiar
                   </button>
                 </div>
@@ -236,16 +323,16 @@
       </div>
     </div>
 
-    <div id="faltaNombre"></div>
-    <div id="faltaApellido"></div>
-    <div id="faltaSueldo"></div>
-    <div id="contenidoUsuario"></div>
-
     <!-- Datos - Gastos de impuestos y servicios - Porcentaje gastado sobre el sueldo del usuario -->
 
+    <div id="títuloSueldo"></div>
+    <div id="sueldoIngresado"></div>
     <div id="títuloGastos"></div>
     <div id="gastoTotal"></div>
+    <div id="títuloPorcentaje"></div>
     <div id="porcentajeDeSueldo"></div>
+    <div id="porcentajeSemáforo"></div>
+    <div id="simulacroSalida"></div>
 
     <!-- Sabías que... - Carousel con informaciones -->
 
@@ -260,9 +347,9 @@
         <!-- DNRPA -->
 
         <div class="carousel-item active">
-          <div id="párrafoConInfo"></div>
-          <p class="centrar">
-            Más info en la página web de la
+          <div id="párrafoConInfo" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de la
             <a
               href="https://www.dnrpa.gov.ar/portal_dnrpa/valuaciones2.php"
               target="_blank"
@@ -280,9 +367,9 @@
         <!-- Patentes -->
 
         <div class="carousel-item">
-          <div id="párrafoConInfo2"></div>
-          <p class="centrar">
-            Más info sobre patentes en la Provincia de Buenos Aires
+          <div id="párrafoConInfo2" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información sobre patentes en la Provincia de Buenos Aires
             <a
               href="https://www.arba.gov.ar/consultar/Resultado_Categoria.asp?codigo=AUT"
               target="_blank"
@@ -295,8 +382,8 @@
               />
             </a>
           </p>
-          <p class="centrar">
-            Más info sobre patentes en la Ciudad de Buenos Aires
+          <p class="centrar párrafosCarousel">
+            Más información sobre patentes en la Ciudad de Buenos Aires
             <a
               href="https://www.agip.gob.ar/impuestos/patentes"
               target="_blank"
@@ -313,9 +400,9 @@
         <div class="carousel-item">
           <!-- ABL -->
 
-          <div id="párrafoConInfo3"></div>
-          <p class="centrar">
-            Más info en la página web de la
+          <div id="párrafoConInfo3" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de la
             <a href="https://www.agip.gob.ar/" target="_blank">
               <img
                 src="https://www.agip.gob.ar/assets/new_2018/img/logo.png"
@@ -330,12 +417,12 @@
         <!-- AySA -->
 
         <div class="carousel-item">
-          <div id="párrafoConInfo4"></div>
-          <p class="centrar">
-            Más info en la página web de
+          <div id="párrafoConInfo4" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de
             <a href="https://www.aysa.com.ar/" target="_blank">
               <img
-                src="https://www.aysa.com.ar/media-library/imagenes_inicio/logo.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Aysa_logo.svg/1200px-Aysa_logo.svg.png"
                 width="150"
                 height="75"
                 alt="Logo de AySA"
@@ -347,9 +434,9 @@
         <!-- Edenor -->
 
         <div class="carousel-item">
-          <div id="párrafoConInfo5"></div>
-          <p class="centrar">
-            Más info en la página web de
+          <div id="párrafoConInfo5" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de
             <a href="https://www.edenor.com/" target="_blank">
               <img
                 src="https://www.edenor.com/themes/custom/edenor/logo-color.svg"
@@ -364,9 +451,9 @@
         <!-- Edesur -->
 
         <div class="carousel-item">
-          <div id="párrafoConInfo6"></div>
-          <p class="centrar">
-            Más info en la página web de
+          <div id="párrafoConInfo6" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de
             <a href="https://www.edesur.com.ar/" target="_blank">
               <img
                 src="https://www.edesur.com.ar/wordpress/wp-content/uploads/2021/12/logo-edesur-nuevo2.jpg"
@@ -381,9 +468,9 @@
         <!-- Metrogas -->
 
         <div class="carousel-item">
-          <div id="párrafoConInfo7"></div>
-          <p class="centrar">
-            Más info en la página web de
+          <div id="párrafoConInfo7" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de
             <a
               href="https://www.metrogas.com.ar/Paginas/Home.aspx"
               target="_blank"
@@ -401,9 +488,9 @@
         <!-- Naturgy -->
 
         <div class="carousel-item">
-          <div id="párrafoConInfo8"></div>
-          <p class="centrar">
-            Más info en la página web de
+          <div id="párrafoConInfo8" class="párrafosCarousel"></div>
+          <p class="centrar párrafosCarousel">
+            Más información en la página web de
             <a href="https://www.naturgy.com/inicio" target="_blank">
               <img
                 src="https://www.naturgy.com/Publicacion/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1478094926907&ssbinary=true"

@@ -6,292 +6,314 @@ $(document).ready(function () {
   console.log("El DOM esta listo");
 });
 
-// jQuery - Datos del formulario.
+// Formulario.
 
-let nombre = $("#nombre").value; // jQuery.
-let apellido = $("#apellido").value; // jQuery.
-let sueldo = $("#sueldo").value; // jQuery.
-let lugarDeResidencia = $("#lugarDeResidencia").value; // jQuery.
-let vivienda = $("#hogarODepto").value; // jQuery.
-let transportePropio = $("#autoOMoto").value; // jQuery.
+// Variables de campos de formularios.
 
-// Class - Usuario.
-
-class Usuario {
-  constructor(nombre, apellido, sueldo, lugarDeResidencia, vivienda) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.sueldo = sueldo;
-    this.lugarDeResidencia = lugarDeResidencia;
-    this.vivienda = vivienda;
-    this.transportePropio = transportePropio;
-  }
-}
-
-// Array - Usuario.
-
-const arrayDeUsuario = [
-  {
-    Nombre: nombre,
-    Apellido: apellido,
-    Sueldo: sueldo,
-    LugarDeResidencia: lugarDeResidencia,
-    Vivienda: vivienda,
-    Auto: transportePropio,
-  },
+var nombre = $("#nombre").value;
+var apellido = $("#apellido").value;
+var sueldo = $("#sueldo").value;
+var provincias = [
+  "Seleccionar",
+  "Ciudad de Buenos Aires",
+  "Provincia de Buenos Aires",
 ];
+var provinciaSeleccionada = $("provincias").value;
+var viviendas = ["Seleccionar", "Casa", "Departamento"];
+var viviendaSeleccionada = $("viviendas").value;
+var transportes = ["Seleccionar", "Si", "No"];
+var transporteSeleccionado = $("transportes").value;
 
-// Datos de formulario.
+// Cargar opciones de provincias.
 
-function escribirDatosDeUsuario() {
-  // Entradas
+function cargarProvincias(provincias) {
+  var select_provincia = $("#provincia");
 
-  let nombre = document.getElementById("nombre").value;
-  let apellido = document.getElementById("apellido").value;
-  let sueldo = document.getElementById("sueldo").value;
-  let lugarDeResidencia = document.getElementById("lugarDeResidencia").value;
-  let vivienda = document.getElementById("hogarODepto").value;
-  let transportePropio = document.getElementById("autoOMoto").value;
-
-  // Funciones de validación
-
-  pedirNombreSiFalta();
-  pedirApellidoSiFalta();
-  pedirSueldoSiFalta();
-
-  // Salida en HTML (Agregar salidas respectivas con las funciones de validación de arriba con el else).
-
-  var contenidoUsuario =
-    "<p>Tu nombre y apellido es: " +
-    nombre +
-    " " +
-    apellido +
-    "." +
-    "</p>" +
-    "<p>Tu sueldo es de: $" +
-    sueldo +
-    "." +
-    "</p>" +
-    "<p>Vivís en: " +
-    lugarDeResidencia +
-    "," +
-    " en una vivienda de tipo " +
-    vivienda +
-    "." +
-    "</p>" +
-    "<p>Medio de transporte propio: " +
-    "" +
-    transportePropio +
-    "." +
-    "</p>";
-
-  $("#contenidoUsuario").html(contenidoUsuario); // jQuery.
-
-  // Salida en consola
-
-  console.log("Nombre ingresado: " + nombre);
-  console.log("Apellido ingresado: " + apellido);
-  console.log("Sueldo ingresado: " + "$" + sueldo);
-  console.log("Lugar de residencia ingresado: " + lugarDeResidencia);
-  console.log("Vivienda ingresada: " + vivienda);
-  console.log("Transporte propio ingresado: " + transportePropio);
+  for (let provincia of provincias) {
+    select_provincia.append(
+      "<option value='" + provincia + "'>" + provincia + "</option>"
+    );
+  }
 }
 
-// Datos obligatorios. Nombre, apellido y sueldo (if - condicionales).
+cargarProvincias(provincias);
 
-function pedirNombreSiFalta() {
-  var nombreIngresado = document.getElementById("nombre").value;
-  if (nombreIngresado == "") {
-    $("#faltaNombre").html(
-      "<p class='alert'>Ingrese su nombre por favor" + "</p>"
-    ); // jQuery.
+// Cargar opciones de viviendas.
+
+function cargarViviendas(viviendas) {
+  var select_vivienda = $("#vivienda");
+
+  for (let vivienda of viviendas) {
+    select_vivienda.append(
+      "<option value='" + vivienda + "'>" + vivienda + "</option>"
+    );
+  }
+}
+
+cargarViviendas(viviendas);
+
+// Cargar opciones de transporte.
+
+function cargarTransportes(transportes) {
+  var select_transporte = $("#transporte");
+
+  for (let transporte of transportes) {
+    select_transporte.append(
+      "<option value='" + transporte + "'>" + transporte + "</option>"
+    );
+  }
+}
+
+cargarTransportes(transportes);
+
+// Validar formulario.
+
+let botónValidar = document.getElementById("botónValidar");
+botónValidar.addEventListener("click", validarFormulario);
+
+function validarFormulario() {
+  // Función validadora (error con rojo y ok con verde).
+
+  function camposValidos(nombre1, nombre2, estado) {
+    var nombre1 = $("#" + nombre1);
+    var nombre2 = $("#" + nombre2);
+
+    if (estado == "error") {
+      nombre1.removeClass("okBorde");
+      nombre1.addClass("errorBorde");
+      nombre2.removeClass("okTexto");
+      nombre2.addClass("errorTexto");
+    } else if (estado == "ok") {
+      nombre1.removeClass("errorBorde");
+      nombre1.addClass("okBorde");
+      nombre2.removeClass("errorTexto");
+      nombre2.addClass("okTexto");
+    }
+  }
+
+  // Nombre.
+
+  let nombre = $("#nombre");
+  let textoNombre = $("#textoNombre");
+
+  if (nombre.val() == "") {
+    textoNombre.html("¡Ingrese su nombre por favor!");
+    nombre.focus();
+    camposValidos("nombre", "textoNombre", "error");
+    return false; // Detengo la validación acá.
+  } else {
+    textoNombre.html("¡Nombre validado!");
+    camposValidos("nombre", "textoNombre", "ok");
+  }
+
+  // Apellido.
+
+  let apellido = $("#apellido");
+  let textoApellido = $("#textoApellido");
+
+  if (apellido.val() == "") {
+    textoApellido.html("¡Ingrese su apellido por favor!");
+    apellido.focus();
+    camposValidos("apellido", "textoApellido", "error");
     return false;
+  } else {
+    textoApellido.html("¡Apellido validado!");
+    camposValidos("apellido", "textoApellido", "ok");
   }
-}
 
-function pedirApellidoSiFalta() {
-  var apellidoIngresado = document.getElementById("apellido").value;
-  if (apellidoIngresado == "") {
-    $("#faltaApellido").html(
-      "<p class='alert'>Ingrese su apellido por favor" + "</p>"
-    ); // jQuery.
+  // Provincias.
+
+  let provincia = $("#provincia");
+  let textoProvincia = $("#textoProvincia");
+
+  if (provincia.val() == "Seleccionar") {
+    textoProvincia.html("¡Ingrese una provincia por favor!");
+    provincia.focus();
+    camposValidos("provincia", "textoProvincia", "error");
     return false;
+  } else if (provincia.val() == "Ciudad de Buenos Aires") {
+    textoProvincia.html("¡Provincia validada!");
+    camposValidos("provincia", "textoProvincia", "ok");
+  } else if (provincia.val() == "Provincia de Buenos Aires") {
+    textoProvincia.html("¡Provincia validada!");
+    camposValidos("provincia", "textoProvincia", "ok");
   }
-}
 
-function pedirSueldoSiFalta() {
-  var sueldoIngresado = document.getElementById("sueldo").value;
-  if (sueldoIngresado == "" || sueldoIngresado <= 0) {
-    $("#faltaSueldo").html(
-      "<p class='alert'>Ingrese su sueldo por favor" + "</p>"
-    ); // jQuery.
+  // Viviendas.
+
+  let vivienda = $("#vivienda");
+  let textoVivienda = $("#textoVivienda");
+
+  if (vivienda.val() == "Seleccionar") {
+    textoVivienda.html("¡Ingrese un tipo de vivienda por favor!");
+    vivienda.focus();
+    camposValidos("vivienda", "textoVivienda", "error");
     return false;
+  } else if (vivienda.val() == "Casa") {
+    textoVivienda.html("¡Vivienda validada!");
+    camposValidos("vivienda", "textoVivienda", "ok");
+  } else if (vivienda.val() == "Departamento") {
+    textoVivienda.html("¡Vivienda validada!");
+    camposValidos("vivienda", "textoVivienda", "ok");
   }
+
+  // Transportes.
+
+  let transporte = $("#transporte");
+  let textoTransporte = $("#textoTransporte");
+
+  if (transporte.val() == "Seleccionar") {
+    textoTransporte.html("¡Ingrese si tiene o no transporte por favor!");
+    transporte.focus();
+    camposValidos("transporte", "textoTransporte", "error");
+    return false; // Detengo la validación acá.
+  } else if (transporte.val() == "Si") {
+    textoTransporte.html("¡Transporte validado!");
+    camposValidos("transporte", "textoTransporte", "ok");
+  }
+
+  // Resultados y salidas del formulario.
+
+  function salidasFormulario() {
+    var nombreValor = nombre.val();
+    var apellidoValor = apellido.val();
+    var formularioSalida1 =
+      "<p class='formularioPárrafo'>¡Hola " +
+      nombreValor +
+      " " +
+      apellidoValor +
+      "!" +
+      "</p>";
+    var formularioSalida2 =
+      "<p class='párrafoSiguienteEtapa'>Gracias por haber cumplido con la primera etapa del instructivo. Ahora te pido por favor que pases a la segunda parte, la de completar los gastos de impuestos y servicios. De esa forma, podrás acceder a los resultados del simulador." +
+      "</p>";
+    document.getElementById("formularioSalida1").innerHTML = formularioSalida1;
+    document.getElementById("formularioSalida2").innerHTML = formularioSalida2;
+  }
+  salidasFormulario();
 }
 
-// Agregar ABL -CABA- o Municipal e Inmobiliario -PBA- (Change - NO FUNCIONA).
+let botónCalcular = document.getElementById("botónCalcular");
+botónCalcular.addEventListener("click", calcularGastoTotal);
 
-let residenciaElegida = document.getElementById("lugarDeResidencia");
-residenciaElegida.addEventListener("onchange", agregarImpuestos);
+function calcularGastoTotal() {
+  // Sueldo.
 
-function agregarImpuestos() {
-  var residenciaSeleccionada =
-    document.getElementById("lugarDeResidencia").value;
-  switch (residenciaSeleccionada) {
-    case "CABA":
-      console.log("Agregar ABL en el HTML"); // Acá agregaría en HTML la opción ABL
-      break;
-    case "GBA":
-      console.log("Agregar Municipal e Inmobiliario en el HTML"); // Acá agregaría en HTML la opción Municipal e Inmobiliario
-      break;
+  let sueldo = $("#sueldo");
+  let textoSueldo = $("#textoSueldo");
+
+  if (sueldo.val() == "") {
+    textoSueldo.html("¡Ingrese su sueldo por favor!");
+    sueldo.focus();
+    sueldo.removeClass("okBorde");
+    sueldo.addClass("errorBorde");
+    textoSueldo.removeClass("okTexto");
+    textoSueldo.addClass("errorTexto");
+    return false;
+  } else {
+    textoSueldo.html("¡Sueldo validado!");
+    sueldo.removeClass("errorBorde");
+    sueldo.addClass("okBorde");
+    textoSueldo.removeClass("errorTexto");
+    textoSueldo.addClass("okTexto");
   }
-}
 
-// Agregar expensas si corresponde (Change - NO FUNCIONA).
+  // Valores de entradas
 
-let expensasSiCorresponde = document.getElementById("hogarODepto");
-expensasSiCorresponde.addEventListener(
-  "onchange",
-  agregarExpensasSiCorresponde
-);
+  let abl = $("#abl").val();
+  let agua = $("#agua").val();
+  let cable = $("#cable").val();
+  let expensas = $("#expensas").val();
+  let gas = $("#gas").val();
+  let inmobiliario = $("#inmobiliario").val();
+  let internet = $("#internet").val();
+  let luz = $("#luz").val();
+  let municipal = $("#municipal").val();
+  let patente = $("#patente").val();
+  let seguroAuto = $("#seguroAuto").val();
+  let seguroHogar = $("#seguroHogar").val();
+  let streaming = $("#streaming").val();
+  let teléfonoFijo = $("#teléfonoFijo").val();
+  let teléfonoMóvil = $("#teléfonoMóvil").val();
+  let otros = $("#otros").val();
 
-function agregarExpensasSiCorresponde() {
-  var expensas = document.getElementById("hogarODepto").value;
-  switch (expensas) {
-    case "departamento":
-      console.log("Agregar expensas en el HTML"); // Acá agregaría en HTML la opción expensas
-      break;
-    case "casa":
-      console.log("No agregar expensas");
-      break;
-  }
-}
-
-// Agregar patente y seguro si corresponde (Change - NO FUNCIONA).
-
-let impuestosDeAutoOMoto = document.getElementById("autoOMoto");
-impuestosDeAutoOMoto.addEventListener(
-  "onchange",
-  agregarPatenteYSeguroSiCorresponde
-);
-
-function agregarPatenteYSeguroSiCorresponde() {
-  var patenteYSeguro = document.getElementById("autoOMoto").value;
-  switch (patenteYSeguro) {
-    case "Si":
-      console.log("Agregar patente y seguro en el HTML"); // Acá agregaría en HTML la opción patente y seguro
-      break;
-    case "No":
-      console.log("No agregar patente ni seguro");
-      break;
-  }
-}
-
-// Storage y JSON.
-
-sessionStorage.setItem("nombre", [nombre]);
-sessionStorage.setItem("apellido", [apellido]);
-sessionStorage.setItem("sueldo", [sueldo]);
-sessionStorage.setItem("lugarDeResidencia", [lugarDeResidencia]);
-sessionStorage.setItem("vivienda", [vivienda]);
-sessionStorage.setItem("transportePropio", [transportePropio]);
-const arrayDeUsuarioEnJson = JSON.stringify(arrayDeUsuario);
-const arrayDeUsuarioEnObjetos = JSON.parse(arrayDeUsuarioEnJson);
-
-// Datos de entradas del usuario y resultados.
-
-// Gasto total de todos los servicios e impuestos.
-
-let botón1 = document.getElementById("botón1");
-botón1.addEventListener("click", valorTotal);
-
-function valorTotal() {
-  // Entradas
-
-  let agua = document.getElementById("agua").value;
-  let gas = document.getElementById("gas").value;
-  let luz = document.getElementById("luz").value;
-  let cable = document.getElementById("cable").value;
-  let internet = document.getElementById("internet").value;
-  let teléfonoFijo = document.getElementById("teléfonoFijo").value;
-  let teléfonoMóvil = document.getElementById("teléfonoMóvil").value;
-  let streaming = document.getElementById("streaming").value;
-  let seguro = document.getElementById("seguro").value;
-  let otros = document.getElementById("otros").value;
   let importeTotal =
+    parseInt(abl) +
     parseInt(agua) +
-    parseInt(gas) +
-    parseInt(luz) +
     parseInt(cable) +
+    parseInt(expensas) +
+    parseInt(gas) +
+    parseInt(inmobiliario) +
     parseInt(internet) +
+    parseInt(luz) +
+    parseInt(municipal) +
+    parseInt(patente) +
+    parseInt(seguroAuto) +
+    parseInt(seguroHogar) +
+    parseInt(streaming) +
     parseInt(teléfonoFijo) +
     parseInt(teléfonoMóvil) +
-    parseInt(streaming) +
-    parseInt(seguro) +
     parseInt(otros);
 
-  // Salida en HTML
+  // Resultados y salidas del simulador.
 
-  var títuloGastos = `<h5>Gastos de impuestos y servicios</h5>`;
+  // Sueldo.
 
+  var títuloSueldo = `<h6 class="simuladorTítulos">Sueldo</h6>`;
+  document.getElementById("títuloSueldo").innerHTML = títuloSueldo;
+
+  var sueldoValor = sueldo.val();
+  var sueldoIngresado =
+    "<p class='simuladorPárrafos'>Tu sueldo es de: $" + sueldoValor + "</p>";
+  document.getElementById("sueldoIngresado").innerHTML = sueldoIngresado;
+
+  // Gastos.
+
+  var títuloGastos = `<h6 class="simuladorTítulos">Gastos</h6>`;
   document.getElementById("títuloGastos").innerHTML = títuloGastos;
 
-  var gastoTotal = "<p>Gasto total: $" + importeTotal + "." + "</p>";
+  var gastoTotal =
+    "<p class='simuladorPárrafos'>Gasto total en impuestos y servicios: $" +
+    importeTotal +
+    "</p>";
   document.getElementById("gastoTotal").innerHTML = gastoTotal;
-  porcentajeDeSueldo();
 
-  // Salida en consola
+  // Porcentaje.
 
-  console.log("Importe de agua: $" + agua);
-  console.log("Importe de gas: $" + gas);
-  console.log("Importe de luz: $" + luz);
-  console.log("Importe de cable: $" + cable);
-  console.log("Importe de internet: $" + internet);
-  console.log("Importe de teléfono fijo: $" + teléfonoFijo);
-  console.log("Importe de teléfono móvil: $" + teléfonoMóvil);
-  console.log("Importe de streaming: $" + streaming);
-  console.log("Importe de seguro: $" + seguro);
-  console.log("Importe de otros gastos: $" + otros);
-  console.log("Gasto total: $" + importeTotal);
-}
+  var títuloPorcentaje = `<h6 class="simuladorTítulos">Porcentaje de gastos</h6>`;
+  document.getElementById("títuloPorcentaje").innerHTML = títuloPorcentaje;
 
-// Porcentaje del sueldo total que se gasta en impuestos y servicios
-
-function porcentajeDeSueldo() {
-  let sueldo = document.getElementById("sueldo").value;
-  let agua = document.getElementById("agua").value;
-  let gas = document.getElementById("gas").value;
-  let luz = document.getElementById("luz").value;
-  let cable = document.getElementById("cable").value;
-  let internet = document.getElementById("internet").value;
-  let teléfonoFijo = document.getElementById("teléfonoFijo").value;
-  let teléfonoMóvil = document.getElementById("teléfonoMóvil").value;
-  let streaming = document.getElementById("streaming").value;
-  let seguro = document.getElementById("seguro").value;
-  let otros = document.getElementById("otros").value;
-  let importe =
-    parseInt(agua) +
-    parseInt(gas) +
-    parseInt(luz) +
-    parseInt(cable) +
-    parseInt(internet) +
-    parseInt(teléfonoFijo) +
-    parseInt(teléfonoMóvil) +
-    parseInt(streaming) +
-    parseInt(seguro) +
-    parseInt(otros);
-  var porcentajeTotal = (importe / sueldo) * 100;
+  var porcentajeTotal = (importeTotal / sueldoValor) * 100;
   var porcentajeTotalConDosDecimales = porcentajeTotal.toFixed(2);
-  let porcentajeDeSueldo = `<p>Porcentaje de sueldo gastado en impuestos y servicios: ${porcentajeTotalConDosDecimales}%</p>`;
+  let porcentajeDeSueldo = `<p class='simuladorPárrafos'>Porcentaje de sueldo gastado en impuestos y servicios: ${porcentajeTotalConDosDecimales}%</p>`;
   document.getElementById("porcentajeDeSueldo").innerHTML = porcentajeDeSueldo;
 
-  // Funciones para el semáforo.
+  // Semáforo del porcentaje.
 
-  // Agregar Semáforo verde para porcentaje <25%.
+  if (porcentajeTotal <= 25) {
+    var porcentajeBajo =
+      "<p class='simuladorPárrafos'>Gastás una porción pequeña de tus ingresos en pagar impuestos y servicios. ¡Seguí así!" +
+      "</p>";
+    document.getElementById("porcentajeSemáforo").innerHTML = porcentajeBajo;
+    porcentajeSemáforo.className += "porcentajeBajo";
+  } else if (porcentajeTotal <= 50) {
+    var porcentajeMedio =
+      "<p class='simuladorPárrafos'>Gastás una porción mediana de tus ingresos en pagar impuestos y servicios. ¡A no descuidarse!" +
+      "</p>";
+    document.getElementById("porcentajeSemáforo").innerHTML = porcentajeMedio;
+    porcentajeSemáforo.className += "porcentajeMedio";
+  } else if (porcentajeTotal > 50) {
+    var porcentajeAlto =
+      "<p class='simuladorPárrafos'>Gastás una porción grande de tus ingresos en pagar impuestos y servicios. ¡Hay que bajar los gastos urgentemente!" +
+      "</p>";
+    document.getElementById("porcentajeSemáforo").innerHTML = porcentajeAlto;
+    porcentajeSemáforo.className += "porcentajeAlto";
+  }
 
-  // Agregar Semáforo amarillo para porcentaje >=25% y <=50%.
-
-  // Agregar Semáforo rojo para porcentaje >50%.
+  var simulacroSalida =
+    "<p class='párrafoSiguienteEtapa'>¡Espero que te hayan servido los resultados del simulacro! Pero eso no es todo. Te invito a que te informes con algunas cuestiones sobre los impuestos y servicios en la sección 'Sabías que...' y que veas los consejos para bajar los gastos de los mismos en la sección 'Tips para ahorrar'." +
+    "</p>";
+  document.getElementById("simulacroSalida").innerHTML = simulacroSalida;
 }
 
 // Creación de párrafos con info (Sabías que...)
@@ -448,3 +470,18 @@ $("#tipBanco").click(function () {
     confirmButtonAriaLabel: "Thumbs up, OK",
   });
 });
+
+/*
+
+// Storage y JSON.
+
+sessionStorage.setItem("nombre", [nombre]);
+sessionStorage.setItem("apellido", [apellido]);
+sessionStorage.setItem("sueldo", [sueldo]);
+sessionStorage.setItem("lugarDeResidencia", [lugarDeResidencia]);
+sessionStorage.setItem("vivienda", [vivienda]);
+sessionStorage.setItem("transportePropio", [transportePropio]);
+const arrayDeUsuarioEnJson = JSON.stringify(arrayDeUsuario);
+const arrayDeUsuarioEnObjetos = JSON.parse(arrayDeUsuarioEnJson);
+
+*/
