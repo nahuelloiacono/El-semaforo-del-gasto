@@ -71,20 +71,7 @@ ul li {
   text-align: center;
 }
 
-/* Body */
-
-.párrafoPrincipal {
-  align-self: center;
-  background: linear-gradient(0.2turn, red, yellow, rgb(0, 255, 0));
-  color: black;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: bolder;
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-}
+/* H5 y H6 */
 
 h5 {
   animation-name: blancoYNegro;
@@ -125,6 +112,23 @@ h6 {
   padding: 20px 0px 20px 0px;
   text-align: center;
   text-transform: uppercase;
+}
+
+/* Párrafos */
+
+/* Párrafo principal */
+
+.párrafoPrincipal {
+  align-self: center;
+  background: linear-gradient(0.2turn, red, yellow, rgb(0, 255, 0));
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bolder;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
 }
 
 p {
@@ -238,22 +242,22 @@ button {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
+  background-image: none;
+  background-size: 100%, 100%;
   height: 100px;
   width: 100px;
-  background-size: 100%, 100%;
-  background-image: none;
 }
 
 .carousel-control-next-icon:after {
+  color: red;
   content: ">";
   font-size: 55px;
-  color: red;
 }
 
 .carousel-control-prev-icon:after {
+  color: red;
   content: "<";
   font-size: 55px;
-  color: red;
 }
 
 .párrafosCarousel {
@@ -267,7 +271,7 @@ button {
   text-align: center;
 }
 
-/* Footer */
+/* Tips */
 
 .contenedorDeTips {
   display: flex;
@@ -279,12 +283,12 @@ button {
 /* Footer */
 
 .footer {
+  background-color: rgb(253, 252, 160);
+  color: #000000;
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
-  color: #000000;
-  background-color: rgb(253, 252, 160);
-  letter-spacing: 1px;
   line-height: 1.5;
+  letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
 }

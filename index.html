@@ -13,7 +13,7 @@
 
     <meta
       name="keywords"
-      content="SIMULADOR, GASTOS, SERVICIOS, IMPUESTOS, AGUA, LUZ, GAS, CABLE, INTERNET, STREAMING, TELÉFONO FIJO, TELÉFONO MÓVIL, CELULAR, SEGURO, PATENTE, EXPENSAS, ABL, MUNICIPAL, INMOBILIARIO, AMBA, ÁREA METROPOLITANA DE BUENOS AIRES, CABA, CIUDAD AUTÓNOMA DE BUENOS AIRES, GBA, GRAN BUENOS AIRES, NAHUEL LOIACONO"
+      content="SIMULADOR, GASTOS, AHORRO, IMPUESTOS, SERVICIOS, ABL, AGUA, CABLE, EXPENSAS, GAS, INMOBILIARIO, INTERNET, LUZ, MUNICIPAL, PATENTE, SEGURO, STREAMING, TELÉFONO FIJO, TELÉFONO MÓVIL, CELULAR, AMBA, ÁREA METROPOLITANA DE BUENOS AIRES, CABA, CIUDAD AUTÓNOMA DE BUENOS AIRES, GBA, GRAN BUENOS AIRES, NAHUEL LOIACONO"
     />
 
     <!-- Bootstrap -->
@@ -66,6 +66,14 @@
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                   <li>
+                    <a class="nav-link active" href="#formulario">Formulario</a>
+                  </li>
+                  <li></li>
+                  <li>
+                    <a class="nav-link active" href="#simulador">Simulador</a>
+                  </li>
+                  <li></li>
+                  <li>
                     <a class="nav-link active" href="#sabíasQue"
                       >Sabías que...</a
                     >
@@ -83,6 +91,8 @@
       </div>
     </div>
 
+    <!-- Párrafo principal -->
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
@@ -93,6 +103,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Instructivo -->
 
     <div class="container-fluid instructivoFondo">
       <div class="row">
@@ -117,7 +129,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h5 class="texto">Formulario</h5>
+          <h5 class="texto" id="formulario">Formulario</h5>
 
           <form>
             <div>
@@ -172,12 +184,14 @@
               </div>
             </div>
 
+            <!-- Formulario - Salidas -->
+
             <div id="formularioSalida1"></div>
             <div id="formularioSalida2"></div>
 
             <!-- Simulador -->
 
-            <h5>Simulador</h5>
+            <h5 id="simulador">Simulador</h5>
             <div>
               <label for="sueldo" class="form-label"
                 >Ingreso neto mensual ($)</label
@@ -323,18 +337,29 @@
       </div>
     </div>
 
-    <!-- Datos - Gastos de impuestos y servicios - Porcentaje gastado sobre el sueldo del usuario -->
+    <!-- Simulador - Salidas -->
+
+    <!-- Sueldo -->
 
     <div id="títuloSueldo"></div>
     <div id="sueldoIngresado"></div>
+
+    <!-- Gastos -->
+
     <div id="títuloGastos"></div>
     <div id="gastoTotal"></div>
+
+    <!-- Porcentaje -->
+
     <div id="títuloPorcentaje"></div>
     <div id="porcentajeDeSueldo"></div>
     <div id="porcentajeSemáforo"></div>
+
+    <!-- Más información -->
+
     <div id="simulacroSalida"></div>
 
-    <!-- Sabías que... - Carousel con informaciones -->
+    <!-- Sabías que... - Carousel con infos -->
 
     <h5 id="sabíasQue">Sabías que...</h5>
 
