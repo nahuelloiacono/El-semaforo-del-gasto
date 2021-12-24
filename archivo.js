@@ -66,7 +66,7 @@ function cargarTransportes(transportes) {
 
 cargarTransportes(transportes);
 
-// Validar formulario.
+// Función - Validar formulario.
 
 let botónValidar = document.getElementById("botónValidar");
 botónValidar.addEventListener("click", validarFormulario);
@@ -200,7 +200,7 @@ function validarFormulario() {
   console.log("Formulario enviado");
 }
 
-// Calcular simulador.
+// Función - Calcular simulador.
 
 let botónCalcular = document.getElementById("botónCalcular");
 botónCalcular.addEventListener("click", calcularGastoTotal);
