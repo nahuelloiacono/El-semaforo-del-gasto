@@ -410,7 +410,7 @@ $("#tipAgua").click(function () {
   Swal.fire({
     title: "¡No derroches agua!",
     icon: "info",
-    html: "No dejes abierta la canilla mientras te lavas los dientes, no tardes más de 15 minutos en bañarte y llená la pileta de forma más espaciada.",
+    html: "No dejes abierta la canilla mientras te lavás los dientes, no tardes más de 15 minutos en bañarte y llená la pileta de forma más espaciada.",
     showCloseButton: true,
 
     confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK',
@@ -450,7 +450,7 @@ $("#tipTv").click(function () {
   Swal.fire({
     title: "¡Menos horas de pantalla!",
     icon: "info",
-    html: "Apaga la tele si no la estás viendo y da de baja el servicio de streaming que no uses a lo largo del mes.",
+    html: "Apagá la tele si no la estás viendo y da de baja el servicio de streaming que no uses a lo largo del mes.",
     showCloseButton: true,
     confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK',
     confirmButtonAriaLabel: "Thumbs up, OK",
@@ -476,7 +476,7 @@ $("#tipBanco").click(function () {
   Swal.fire({
     title: "¡Achicar gastos por un tiempo!",
     icon: "info",
-    html: "Si estás gastando gran parte de tu sueldo en servicios, achica gastos por un tiempo en otras áreas, como el 'gasto hormiga' (compras en un kiosco), indumentaria, salidas y/u ocio, entre otras cosas.",
+    html: "Si estás gastando gran parte de tu sueldo en servicios, achicá gastos por un tiempo en otras áreas, como el 'gasto hormiga' (compras en un kiosco), indumentaria, salidas y/u ocio, entre otras cosas.",
     showCloseButton: true,
     confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK',
     confirmButtonAriaLabel: "Thumbs up, OK",
