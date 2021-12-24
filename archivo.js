@@ -175,23 +175,26 @@ function validarFormulario() {
   // Resultados y salidas del formulario.
 
   function salidasFormulario() {
-    var nombreValor = nombre.val();
-    var apellidoValor = apellido.val();
+    // LocalStorage.
+
+    localStorage.setItem("nombre", nombre.val());
+    localStorage.setItem("apellido", apellido.val());
+    localStorage.setItem("provincia", provincia.val());
+    localStorage.setItem("vivienda", vivienda.val());
+    localStorage.setItem("transporte", transporte.val());
+
+    // Salida y siguiente etapa.
+
+    var nombreStorage = localStorage.getItem("nombre");
+    var apellidoStorage = localStorage.getItem("apellido");
     var formularioSalida1 =
-      "<p class='formularioPárrafo'>¡Hola " +
-      nombreValor +
+      "<div class='párrafoSalida'><p>¡Hola " +
+      nombreStorage +
       " " +
-      apellidoValor +
-      "!" +
-      "</p>";
+      apellidoStorage +
+      "!</p><p>Gracias por haber cumplido con la primera etapa del instructivo. Ahora te pido por favor que pases a la segunda parte, la de completar los gastos de impuestos y servicios. De esa forma, podrás acceder a los resultados del simulador.</p></div>";
 
-    // Siguiente etapa.
-
-    var formularioSalida2 =
-      "<p class='párrafoSiguienteEtapa'>Gracias por haber cumplido con la primera etapa del instructivo. Ahora te pido por favor que pases a la segunda parte, la de completar los gastos de impuestos y servicios. De esa forma, podrás acceder a los resultados del simulador." +
-      "</p>";
     document.getElementById("formularioSalida1").innerHTML = formularioSalida1;
-    document.getElementById("formularioSalida2").innerHTML = formularioSalida2;
   }
   salidasFormulario();
   console.log("Formulario enviado");
@@ -321,7 +324,7 @@ function calcularGastoTotal() {
   // Siguiente etapa.
 
   var simulacroSalida =
-    "<p class='párrafoSiguienteEtapa'>¡Espero que te hayan servido los resultados del simulacro! Pero eso no es todo. Te invito a que te informes con algunas cuestiones sobre los impuestos y servicios en la sección 'Sabías que...' y que veas los consejos para bajar los gastos de los mismos en la sección 'Tips para ahorrar'." +
+    "<p class='párrafoSalida'>¡Espero que te hayan servido los resultados del simulacro! Pero eso no es todo. Te invito a que te informes con algunas cuestiones sobre los impuestos y servicios en la sección 'Sabías que...' y que veas los consejos para bajar los gastos de los mismos en la sección 'Tips para ahorrar'." +
     "</p>";
   document.getElementById("simulacroSalida").innerHTML = simulacroSalida;
 
@@ -482,18 +485,3 @@ $("#tipBanco").click(function () {
     confirmButtonAriaLabel: "Thumbs up, OK",
   });
 });
-
-/*
-
-// Storage y JSON.
-
-sessionStorage.setItem("nombre", [nombre]);
-sessionStorage.setItem("apellido", [apellido]);
-sessionStorage.setItem("sueldo", [sueldo]);
-sessionStorage.setItem("lugarDeResidencia", [lugarDeResidencia]);
-sessionStorage.setItem("vivienda", [vivienda]);
-sessionStorage.setItem("transportePropio", [transportePropio]);
-const arrayDeUsuarioEnJson = JSON.stringify(arrayDeUsuario);
-const arrayDeUsuarioEnObjetos = JSON.parse(arrayDeUsuarioEnJson);
-
-*/

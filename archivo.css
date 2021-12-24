@@ -59,18 +59,6 @@ ul li {
   text-align: center;
 }
 
-.párrafoSiguienteEtapa {
-  align-self: center;
-  background: linear-gradient(red, yellow, rgb(0, 255, 0));
-  color: black;
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
-  font-weight: bolder;
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-}
-
 /* H5 y H6 */
 
 h5 {
@@ -120,10 +108,21 @@ h6 {
 
 .párrafoPrincipal {
   align-self: center;
-  background: linear-gradient(0.2turn, red, yellow, rgb(0, 255, 0));
-  color: black;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
   font-family: "Times New Roman", Times, serif;
   font-size: 18px;
+  font-style: italic;
+  font-weight: bolder;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.párrafoSalida {
+  background: rgb(255, 208, 80);
+  color: black;
+  font-family: "Times New Roman", Times, serif;
   font-style: italic;
   font-weight: bolder;
   margin: 20px;
